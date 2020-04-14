@@ -1,10 +1,11 @@
-import { INestApplication, HttpStatus } from '@nestjs/common';
+import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { build, fake, bool } from 'test-data-bot';
-import * as supertest from 'supertest';
 import { matchers } from 'jest-json-schema';
+import * as supertest from 'supertest';
+import { bool, build, fake } from 'test-data-bot';
 
 import { AppModule } from '../src/app.module';
+import { TaskService } from '../src/task/task.service';
 
 const taskBuilder = build('task').fields({
   title: fake(f => f.lorem.words(5)),
@@ -47,7 +48,7 @@ expect.extend(matchers);
 describe('TaskController (e2e)', () => {
   let app: INestApplication;
   let request: supertest.SuperTest<supertest.Test>;
-  const tasks = [taskBuilder(), taskBuilder(), taskBuilder()];
+  let taskService: TaskService;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -56,175 +57,95 @@ describe('TaskController (e2e)', () => {
 
     app = await moduleFixture.createNestApplication();
     await app.init();
+    taskService = app.get(TaskService);
+    await Promise.all(
+      Array.from({ length: 3 }, () => taskService.create(taskBuilder())),
+    );
     request = supertest(app.getHttpServer());
   });
 
   afterEach(async () => await app.close());
 
-  it('list all the tasks', done => {
-    request
-      .get('/task')
-      .expect(HttpStatus.OK)
-      .end((err, resp) => {
-        if (err) {
-          return done(err);
-        }
-        expect(resp.body).toMatchSchema(tasksSchema);
-        done();
-      });
-  });
+  it('list all the tasks', () =>
+    expect(
+      request
+        .get('/task')
+        .expect(HttpStatus.OK)
+        .then(resp => resp.body),
+    ).resolves.toMatchSchema(tasksSchema));
 
-  it('list all done tasks', done => {
-    request
+  it('list all done tasks', async () => {
+    const { body: tasks } = await request
       .get('/task/done')
-      .expect(HttpStatus.OK)
-      .end((err, resp) => {
-        if (err) {
-          return done(err);
-        }
+      .expect(HttpStatus.OK);
 
-        expect(
-          resp.body.reduce((prev, curr) => prev && curr.done, true),
-        ).toBeTruthy();
-        done();
-      });
+    expect(Array.isArray(tasks)).toBe(true);
+    expect(tasks.reduce((prev, curr) => prev && curr.done, true)).toBeTruthy();
   });
 
-  it('list all pending tasks', done => {
-    request
+  it('list all pending tasks', async () => {
+    const { body: tasks } = await request
       .get('/task/pending')
-      .expect(HttpStatus.OK)
-      .end((err, resp) => {
-        if (err) {
-          return done(err);
-        }
+      .expect(HttpStatus.OK);
 
-        expect(
-          resp.body.reduce((prev, curr) => prev || curr.done, false),
-        ).toBeFalsy();
-        done();
-      });
+    expect(Array.isArray(tasks)).toBe(true);
+    expect(tasks.reduce((prev, curr) => prev || curr.done, false)).toBeFalsy();
   });
 
-  it('get one task', done => {
-    request
-      .get('/task/1')
-      .expect(HttpStatus.OK)
-      .end((err, resp) => {
-        if (err) {
-          return done(err);
-        }
+  it('get one task', () =>
+    expect(
+      request
+        .get('/task/1')
+        .expect(HttpStatus.OK)
+        .then(resp => resp.body),
+    ).resolves.toMatchSchema(taskSchema));
 
-        expect(resp.body).toMatchSchema(taskSchema);
-        done();
-      });
+  it('create a new task', () =>
+    expect(
+      request
+        .post('/task')
+        .send(taskBuilder())
+        .expect(HttpStatus.CREATED)
+        .then(resp => resp.body),
+    ).resolves.toMatchSchema(taskSchema));
+
+  it('update an existing task', async () => {
+    const task = await taskService.create(taskBuilder());
+
+    await expect(
+      request
+        .put(`/task/${task.id}`)
+        .send(taskBuilder())
+        .expect(HttpStatus.OK)
+        .then(resp => resp.body),
+    ).resolves.toMatchSchema(taskSchema);
   });
 
-  it('create a new task', done => {
-    request
-      .post('/task')
-      .send(taskBuilder())
-      .expect(HttpStatus.CREATED)
-      .end((err, resp) => {
-        if (err) {
-          return done(err);
-        }
+  it('mark as done a task', async () => {
+    const task = await taskService.create(taskBuilder({ done: false }));
 
-        expect(resp.body).toMatchSchema(taskSchema);
-        done();
-      });
+    const { body } = await request
+      .patch(`/task/${task.id}/done`)
+      .expect(HttpStatus.OK);
+
+    expect(body).toMatchSchema(taskSchema);
+    expect(body.done).toBe(true);
   });
 
-  it('update an existing task', done => {
-    request
-      .post('/task')
-      .send(taskBuilder())
-      .expect(HttpStatus.CREATED)
-      .end((err, { body: task }) => {
-        if (err) {
-          return done(err);
-        }
+  it('mark as pending a task', async () => {
+    const task = await taskService.create(taskBuilder({ done: true }));
 
-        request
-          .put(`/task/${task.id}`)
-          .send(taskBuilder())
-          .expect(HttpStatus.OK)
-          .end((error, resp) => {
-            if (error) {
-              return done(error);
-            }
+    const { body } = await request
+      .patch(`/task/${task.id}/pending`)
+      .expect(HttpStatus.OK);
 
-            expect(resp.body).toMatchSchema(taskSchema);
-            expect(resp.body.title).not.toBe(task.title);
-            done();
-          });
-      });
+    expect(body).toMatchSchema(taskSchema);
+    expect(body.done).toBe(false);
   });
 
-  it('mark as done a task', done => {
-    request
-      .post('/task')
-      .send(taskBuilder({ done: false }))
-      .expect(HttpStatus.CREATED)
-      .end((err, { body: task }) => {
-        if (err) {
-          return done(err);
-        }
+  it('remove a task', async () => {
+    const task = await taskService.create(taskBuilder());
 
-        request
-          .patch(`/task/${task.id}/done`)
-          .expect(HttpStatus.OK)
-          .end((error, resp) => {
-            if (error) {
-              return done(error);
-            }
-
-            expect(resp.body).toMatchSchema(taskSchema);
-            expect(resp.body.done).toBeTruthy();
-            done();
-          });
-      });
-  });
-
-  it('mark as pending a task', done => {
-    request
-      .post('/task')
-      .send(taskBuilder({ done: true }))
-      .expect(HttpStatus.CREATED)
-      .end((err, { body: task }) => {
-        if (err) {
-          return done(err);
-        }
-
-        request
-          .patch(`/task/${task.id}/pending`)
-          .expect(HttpStatus.OK)
-          .end((error, resp) => {
-            if (error) {
-              return done(error);
-            }
-
-            expect(resp.body).toMatchSchema(taskSchema);
-            expect(resp.body.done).toBeFalsy();
-            done();
-          });
-      });
-  });
-
-  it('remove a task', done => {
-    request
-      .post('/task')
-      .send(taskBuilder())
-      .expect(HttpStatus.CREATED)
-      .end((err, { body: task }) => {
-        if (err) {
-          return done(err);
-        }
-
-        request
-          .delete(`/task/${task.id}`)
-          .expect(HttpStatus.NO_CONTENT)
-          .end(done);
-      });
+    await request.delete(`/task/${task.id}`).expect(HttpStatus.NO_CONTENT);
   });
 });

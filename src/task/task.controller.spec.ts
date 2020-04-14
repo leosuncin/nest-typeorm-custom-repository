@@ -100,11 +100,13 @@ describe('Task Controller', () => {
   });
 
   it('should create one task', async () => {
-    expect(await controller.create({ title: 'Make a sandwich' })).toMatchObject({
-      id: expect.any(Number),
-      title: 'Make a sandwich',
-      done: false,
-    });
+    expect(await controller.create({ title: 'Make a sandwich' })).toMatchObject(
+      {
+        id: expect.any(Number),
+        title: 'Make a sandwich',
+        done: false,
+      },
+    );
   });
 
   it('should update one task', async () => {
@@ -119,15 +121,11 @@ describe('Task Controller', () => {
 
   it('fail to update one task', () => {
     expect.assertions(1);
-    expect(
-      controller.update(0, { title: 'Make a salad' }),
-    ).rejects.toThrow();
+    expect(controller.update(0, { title: 'Make a salad' })).rejects.toThrow();
   });
 
   it('should mark one task as done', async () => {
-    expect(
-      await controller.markDone(1),
-    ).toMatchObject({
+    expect(await controller.markDone(1)).toMatchObject({
       id: 1,
       title: expect.any(String),
       done: true,
@@ -135,9 +133,7 @@ describe('Task Controller', () => {
   });
 
   it('should mark one task as pending', async () => {
-    expect(
-      await controller.markPending(1),
-    ).toMatchObject({
+    expect(await controller.markPending(1)).toMatchObject({
       id: 1,
       title: expect.any(String),
       done: false,

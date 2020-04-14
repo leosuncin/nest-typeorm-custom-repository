@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Task {
@@ -8,7 +14,7 @@ export class Task {
   @Column()
   title: string;
 
-  @Column({default: false})
+  @Column({ default: false })
   done: boolean;
 
   @CreateDateColumn()

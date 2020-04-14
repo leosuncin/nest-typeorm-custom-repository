@@ -1,0 +1,43 @@
+name: Unit test
+
+on: [push]
+
+jobs:
+  build:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - uses: bahmutov/npm-install@v1
+    - name: Build the project
+      run: |
+        npx tsc --noEmit --incremental false --noErrorTruncation
+        npm run lint --if-present
+        npm run build --if-present
+      env:
+        PORT: 3000
+
+  test:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - uses: bahmutov/npm-install@v1
+    - name: Run unit test
+      run: |
+        npm test
+      env:
+        CI: 'true'
+        PORT: 3000

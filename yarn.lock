@@ -480,10 +480,10 @@
     multer "1.4.2"
     tslib "1.11.1"
 
-"@nestjs/testing@^7.0.0":
-  version "7.0.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.0.7.tgz#c734ec7927efeccf24a6c58582ee0ee910d3045a"
-  integrity sha512-Qh6hXmRihHTNR5kzqvVmdFeRhhgpIeZxWibQoS+fvLqy8uLf2yoEAJge49eRgI4OSzAwEa/DkeovhMW/idxfFw==
+"@nestjs/testing@^7.0.8":
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.0.8.tgz#058cef6364be64d3d04fbe688b350ff24eedb6c8"
+  integrity sha512-5xEkyA3oBEh1vo3S220mm97vhnkMYwyZAP+hIzABFwrb4v+XS8Ic8B3B5i3U4A6hh2YLJ5feBZTuC8YDKm0oEw==
   dependencies:
     optional "0.1.4"
     tslib "1.11.1"

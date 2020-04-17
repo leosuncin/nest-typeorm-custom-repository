@@ -1,21 +1,29 @@
+import {
+  bool,
+  build,
+  fake,
+  perBuild,
+  sequence,
+} from '@jackfranklin/test-data-bot';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getCustomRepositoryToken } from '@nestjs/typeorm';
-import { build, incrementingId, fake, bool, perBuild } from 'test-data-bot';
 
 import { TaskController } from './task.controller';
-import { TaskService } from './task.service';
 import { TaskRepository } from './task.repository';
+import { TaskService } from './task.service';
 
-const taskBuilder = build('task').fields({
-  id: incrementingId(),
-  title: fake(f => f.lorem.words(5)),
-  done: bool(),
-  createdAt: perBuild(() => new Date()),
-  updatedAt: perBuild(() => new Date()),
+const taskBuilder = build('Task', {
+  fields: {
+    id: sequence(),
+    title: fake(f => f.lorem.words(5)),
+    done: bool(),
+    createdAt: perBuild(() => new Date()),
+    updatedAt: perBuild(() => new Date()),
+  },
 });
 
 const MockRepository = jest.fn().mockImplementation(() => {
-  const tasks = new Array(10).fill(taskBuilder());
+  const tasks = Array.from({ length: 10 }, () => taskBuilder());
 
   return {
     find() {
@@ -28,13 +36,15 @@ const MockRepository = jest.fn().mockImplementation(() => {
       return Promise.resolve(tasks.filter(t => !t.done));
     },
     findOne(id) {
-      return Promise.resolve(id < 1 ? null : taskBuilder({ id }));
+      return Promise.resolve(
+        id < 1 ? null : taskBuilder({ map: t => ({ ...t, id }) }),
+      );
     },
     create(dto) {
       return { ...dto, done: false };
     },
     save(dto) {
-      return Promise.resolve(taskBuilder(dto));
+      return Promise.resolve(taskBuilder({ map: t => ({ ...t, ...dto }) }));
     },
     delete(id) {
       return Promise.resolve({ raw: [], affected: id < 1 ? 0 : 1 });

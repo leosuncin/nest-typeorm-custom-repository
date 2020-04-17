@@ -280,6 +280,15 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
+"@jackfranklin/test-data-bot@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@jackfranklin/test-data-bot/-/test-data-bot-1.1.0.tgz#35a9b39077adb5dd5b6909537a682321426f311b"
+  integrity sha512-hK1LrE5XL2yZ6p+vj8xyNBGkwE1hTTagrGfKKbkwTG8nFmtKdovIM2+c23P+LzZgKiFKePRhxi3dT8RFUMPkrQ==
+  dependencies:
+    "@types/faker" "^4.1.9"
+    faker "4.1.0"
+    lodash "^4.17.15"
+
 "@jest/console@^25.3.0":
   version "25.3.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-25.3.0.tgz#33b56b81238427bf3ebe3f7b3378d2f79cdbd409"
@@ -597,6 +606,11 @@
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
+
+"@types/faker@^4.1.9":
+  version "4.1.11"
+  resolved "https://registry.yarnpkg.com/@types/faker/-/faker-4.1.11.tgz#07911f1a39aeeaeec71d8efa0f93ef0eeafd3462"
+  integrity sha512-iL7khABWgMH53FDfQNYtbFDJXjM3G97KswtyVMUP9XBSt9c+33L1TsXI+mx+EgnoOcuSp12qZae6hLCxGcq7yg==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.1"
@@ -4937,13 +4951,6 @@ terminal-link@^2.0.0:
   dependencies:
     ansi-escapes "^4.2.1"
     supports-hyperlinks "^2.0.0"
-
-test-data-bot@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/test-data-bot/-/test-data-bot-0.8.0.tgz#6ad904cd450e926c2113e38798e3fe4c5cb2066a"
-  integrity sha512-IFeWrb8PCV1sEyzYf1dgtRciBe3tw1Mr9Wj2o/ldEXofXma3hZiFCeBynb3DnVWxk6r1u/149qQ1it8ZzUTI0A==
-  dependencies:
-    faker "4.1.0"
 
 test-exclude@^6.0.0:
   version "6.0.0"

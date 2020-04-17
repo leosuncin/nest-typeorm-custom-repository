@@ -1,3 +1,4 @@
+import { bool, build, fake } from '@jackfranklin/test-data-bot';
 import {
   HttpStatus,
   INestApplication,
@@ -6,14 +7,16 @@ import {
 import { Test, TestingModule } from '@nestjs/testing';
 import { matchers } from 'jest-json-schema';
 import * as supertest from 'supertest';
-import { bool, build, fake } from 'test-data-bot';
 
 import { AppModule } from '../src/app.module';
+import { Task } from '../src/task/task.entity';
 import { TaskService } from '../src/task/task.service';
 
-const taskBuilder = build('task').fields({
-  title: fake(f => f.lorem.words(5)),
-  done: bool(),
+const taskBuilder = build<Pick<Task, 'title' | 'done'>>('Task', {
+  fields: {
+    title: fake(f => f.lorem.words(5)),
+    done: bool(),
+  },
 });
 const taskSchema = {
   title: 'task',
@@ -129,7 +132,9 @@ describe('TaskController (e2e)', () => {
   );
 
   it('mark as done a task', async () => {
-    const task = await taskService.create(taskBuilder({ done: false }));
+    const task = await taskService.create(
+      taskBuilder({ map: t => ({ ...t, done: false }) }),
+    );
 
     const { body } = await request
       .patch(`/task/${task.id}/done`)
@@ -140,7 +145,9 @@ describe('TaskController (e2e)', () => {
   });
 
   it('mark as pending a task', async () => {
-    const task = await taskService.create(taskBuilder({ done: true }));
+    const task = await taskService.create(
+      taskBuilder({ map: t => ({ ...t, done: true }) }),
+    );
 
     const { body } = await request
       .patch(`/task/${task.id}/pending`)

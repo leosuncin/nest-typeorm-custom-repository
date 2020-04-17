@@ -280,6 +280,15 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
+"@jackfranklin/test-data-bot@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@jackfranklin/test-data-bot/-/test-data-bot-1.1.0.tgz#35a9b39077adb5dd5b6909537a682321426f311b"
+  integrity sha512-hK1LrE5XL2yZ6p+vj8xyNBGkwE1hTTagrGfKKbkwTG8nFmtKdovIM2+c23P+LzZgKiFKePRhxi3dT8RFUMPkrQ==
+  dependencies:
+    "@types/faker" "^4.1.9"
+    faker "4.1.0"
+    lodash "^4.17.15"
+
 "@jest/console@^25.3.0":
   version "25.3.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-25.3.0.tgz#33b56b81238427bf3ebe3f7b3378d2f79cdbd409"
@@ -445,21 +454,21 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@nestjs/common@^7.0.1":
-  version "7.0.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.0.7.tgz#c79b742d9181dc5c8fda51b60bbf69c553cec3cf"
-  integrity sha512-qAYtNtEv5GvHOeHEJVYOHYeqT+vVMW4YM63D8xWAAkQRcFUFDO9oRzi+Y27gRA1nY7DfgMk2OO5bD4+OzIm//g==
+"@nestjs/common@^7.0.8":
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.0.8.tgz#f36e22aafd1a64b3b78a5a8d34bad71b6d867fc5"
+  integrity sha512-NHY4tUni5aDnIYFtRqKLTp74bIXXbf7Vy8pI0HtwiaMKwr6BU+5PD6ldzapL7H7pp3YmT3lvW/st9V7lT5ld2Q==
   dependencies:
     axios "0.19.2"
     cli-color "2.0.0"
     iterare "1.2.0"
     tslib "1.11.1"
-    uuid "7.0.2"
+    uuid "7.0.3"
 
-"@nestjs/core@^7.0.0":
-  version "7.0.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.0.7.tgz#3fd3e49c9ff76662271fe2e78b35e0195c76fa2d"
-  integrity sha512-0ncPhn8foK3HqUHNlHcvOLv999djD888/nmVuEyFlnjcte34/kqNQNEEq2tMnPy9lfaKtl/P4Ibr02CCN+oLcg==
+"@nestjs/core@^7.0.8":
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.0.8.tgz#f11ff6417ff7c08f04307cb61ea5ae39cb83bda1"
+  integrity sha512-YgITgyJY8vRfX01sK2rbC58q8U0coaj4rsnOLSIRDFoXh2aprkT07i8uuG2wMub5p3BjuOoaSVAaioH9Td6iZw==
   dependencies:
     "@nuxtjs/opencollective" "0.2.2"
     fast-safe-stringify "2.0.7"
@@ -467,12 +476,12 @@
     object-hash "2.0.3"
     path-to-regexp "3.2.0"
     tslib "1.11.1"
-    uuid "7.0.2"
+    uuid "7.0.3"
 
-"@nestjs/platform-express@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.0.0.tgz#b7ed68fbf1bb5d20d06df75800a551b17f2bc5f5"
-  integrity sha512-+CbK6tfYeX/L5EB9hR3Z9LdSE1yCQ3xduTXaFsg4EvF2rTK1VhEKTRw2QozYMjog6IvxqAxZq95+5MMAN1O2NQ==
+"@nestjs/platform-express@^7.0.8":
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.0.8.tgz#0d957a1559267d00731dfc26951d28a6527a0dc2"
+  integrity sha512-b8k9vX1DDFuABxe0JpO0H4gA6f1j7OUHORQ3lsOUPjaI/2ufUs3QGk05saJkSo2qsNKRFpTIllGI6PPqvet3hQ==
   dependencies:
     body-parser "1.19.0"
     cors "2.8.5"
@@ -597,6 +606,11 @@
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
+
+"@types/faker@^4.1.9":
+  version "4.1.11"
+  resolved "https://registry.yarnpkg.com/@types/faker/-/faker-4.1.11.tgz#07911f1a39aeeaeec71d8efa0f93ef0eeafd3462"
+  integrity sha512-iL7khABWgMH53FDfQNYtbFDJXjM3G97KswtyVMUP9XBSt9c+33L1TsXI+mx+EgnoOcuSp12qZae6hLCxGcq7yg==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.1"
@@ -3532,11 +3546,6 @@ minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
-  integrity sha1-hX/Kv8M5fSYluCKCYuhqp6ARsF0=
-
 minimist@^1.1.1, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
@@ -3575,14 +3584,7 @@ mkdirp@1.x:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-mkdirp@^0.5.0, mkdirp@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
-  integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
-  dependencies:
-    minimist "0.0.8"
-
-mkdirp@^0.5.3:
+mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.3:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.5.tgz#d91cefd62d1436ca0f41620e251288d420099def"
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
@@ -4938,13 +4940,6 @@ terminal-link@^2.0.0:
     ansi-escapes "^4.2.1"
     supports-hyperlinks "^2.0.0"
 
-test-data-bot@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/test-data-bot/-/test-data-bot-0.8.0.tgz#6ad904cd450e926c2113e38798e3fe4c5cb2066a"
-  integrity sha512-IFeWrb8PCV1sEyzYf1dgtRciBe3tw1Mr9Wj2o/ldEXofXma3hZiFCeBynb3DnVWxk6r1u/149qQ1it8ZzUTI0A==
-  dependencies:
-    faker "4.1.0"
-
 test-exclude@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/test-exclude/-/test-exclude-6.0.0.tgz#04a8698661d805ea6fa293b6cb9e63ac044ef15e"
@@ -5072,10 +5067,10 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
-ts-jest@^25.3.1:
-  version "25.3.1"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-25.3.1.tgz#58e2ed3506e4e4487c0b9b532846a5cade9656ba"
-  integrity sha512-O53FtKguoMUByalAJW+NWEv7c4tus5ckmhfa7/V0jBb2z8v5rDSLFC1Ate7wLknYPC1euuhY6eJjQq4FtOZrkg==
+ts-jest@^25.4.0:
+  version "25.4.0"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-25.4.0.tgz#5ad504299f8541d463a52e93e5e9d76876be0ba4"
+  integrity sha512-+0ZrksdaquxGUBwSdTIcdX7VXdwLIlSRsyjivVA9gcO+Cvr6ByqDhu/mi5+HCcb6cMkiQp5xZ8qRO7/eCqLeyw==
   dependencies:
     bs-logger "0.x"
     buffer-from "1.x"
@@ -5325,6 +5320,11 @@ uuid@7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.2.tgz#7ff5c203467e91f5e0d85cfcbaaf7d2ebbca9be6"
   integrity sha512-vy9V/+pKG+5ZTYKf+VcphF5Oc6EFiu3W8Nv3P3zIh0EqVI80ZxOzuPfe9EHjkFNvf8+xuTHVeei4Drydlx4zjw==
+
+uuid@7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
+  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 uuid@^3.3.2:
   version "3.3.2"

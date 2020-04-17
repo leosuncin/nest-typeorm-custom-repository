@@ -1,4 +1,8 @@
-import { HttpStatus, INestApplication } from '@nestjs/common';
+import {
+  HttpStatus,
+  INestApplication,
+  NotFoundException,
+} from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { matchers } from 'jest-json-schema';
 import * as supertest from 'supertest';
@@ -49,6 +53,7 @@ describe('TaskController (e2e)', () => {
   let app: INestApplication;
   let request: supertest.SuperTest<supertest.Test>;
   let taskService: TaskService;
+  const taskIds = [1, 2, 3];
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -92,34 +97,36 @@ describe('TaskController (e2e)', () => {
     expect(tasks.reduce((prev, curr) => prev || curr.done, false)).toBeFalsy();
   });
 
-  it('get one task', () =>
+  it.each(taskIds)('get task with id of %d', id =>
     expect(
       request
-        .get('/task/1')
+        .get(`/task/${id}`)
         .expect(HttpStatus.OK)
         .then(resp => resp.body),
-    ).resolves.toMatchSchema(taskSchema));
+    ).resolves.toMatchSchema(taskSchema),
+  );
 
-  it('create a new task', () =>
+  it.each(Array.from({ length: 3 }, () => taskBuilder()))(
+    'create a new task with %p',
+    newTask =>
+      expect(
+        request
+          .post('/task')
+          .send(newTask)
+          .expect(HttpStatus.CREATED)
+          .then(resp => resp.body),
+      ).resolves.toMatchSchema(taskSchema),
+  );
+
+  it.each(taskIds)('update task with id of %d', async id =>
     expect(
       request
-        .post('/task')
-        .send(taskBuilder())
-        .expect(HttpStatus.CREATED)
-        .then(resp => resp.body),
-    ).resolves.toMatchSchema(taskSchema));
-
-  it('update an existing task', async () => {
-    const task = await taskService.create(taskBuilder());
-
-    await expect(
-      request
-        .put(`/task/${task.id}`)
+        .put(`/task/${id}`)
         .send(taskBuilder())
         .expect(HttpStatus.OK)
         .then(resp => resp.body),
-    ).resolves.toMatchSchema(taskSchema);
-  });
+    ).resolves.toMatchSchema(taskSchema),
+  );
 
   it('mark as done a task', async () => {
     const task = await taskService.create(taskBuilder({ done: false }));
@@ -147,5 +154,6 @@ describe('TaskController (e2e)', () => {
     const task = await taskService.create(taskBuilder());
 
     await request.delete(`/task/${task.id}`).expect(HttpStatus.NO_CONTENT);
+    await expect(taskService.get(task.id)).rejects.toThrow(NotFoundException);
   });
 });

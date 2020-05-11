@@ -27,7 +27,7 @@
     "reflect-metadata": "^0.1.12",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.5",
-    "sqlite3": "^4.1.1",
+    "sqlite3": "^4.2.0",
     "typeorm": "^0.2.24"
   },
   "devDependencies": {

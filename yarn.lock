@@ -289,10 +289,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
-"@jackfranklin/test-data-bot@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@jackfranklin/test-data-bot/-/test-data-bot-1.1.0.tgz#35a9b39077adb5dd5b6909537a682321426f311b"
-  integrity sha512-hK1LrE5XL2yZ6p+vj8xyNBGkwE1hTTagrGfKKbkwTG8nFmtKdovIM2+c23P+LzZgKiFKePRhxi3dT8RFUMPkrQ==
+"@jackfranklin/test-data-bot@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@jackfranklin/test-data-bot/-/test-data-bot-1.2.0.tgz#e9b4b6c809df506c58d3ab18efcf4a23f2acc45c"
+  integrity sha512-fJwmtJU6HHk4RxKzo2Bh7/C4yJSy3qJ9FBGON/geSDQtyFLanl2tSsqipV/eiwUBwPpB5vBvPGpva8Hy6gZQKA==
   dependencies:
     "@types/faker" "^4.1.9"
     faker "4.1.0"

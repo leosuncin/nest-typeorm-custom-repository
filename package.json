@@ -40,7 +40,7 @@
     "@types/supertest": "^2.0.10",
     "jest": "^25.5.4",
     "jest-json-schema": "^2.1.0",
-    "nodemon": "^2.0.3",
+    "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "supertest": "^4.0.0",
     "ts-jest": "^25.5.1",

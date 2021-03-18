@@ -8,16 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x, 14.x]
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - uses: bahmutov/npm-install@v1
-    - name: Run E2E tests
-      run: |
-        npm run test:e2e
-      env:
-        CI: 'true'
-        PORT: 3000
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: bahmutov/npm-install@v1
+      - name: Run E2E tests
+        run: |
+          npm run test:e2e
+        env:
+          CI: 'true'
+          PORT: 3000

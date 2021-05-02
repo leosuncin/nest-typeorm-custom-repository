@@ -27,7 +27,7 @@
     "@nestjs/typeorm": "^7.1.4",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^3.0.0",
-    "rxjs": "^6.6.7",
+    "rxjs": "^7.0.0",
     "sqlite3": "^5.0.2",
     "typeorm": "^0.2.32"
   },

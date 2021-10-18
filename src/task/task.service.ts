@@ -1,5 +1,4 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 
 import { TaskRepository } from './task.repository';
 import { TaskCreate } from './dto/task-create.dto';
@@ -7,10 +6,7 @@ import { TaskUpdate } from './dto/task-update.dto';
 
 @Injectable()
 export class TaskService {
-  constructor(
-    @InjectRepository(TaskRepository)
-    private readonly taskRepository: TaskRepository,
-  ) {}
+  constructor(private readonly taskRepository: TaskRepository) {}
 
   findAll() {
     return this.taskRepository.find();

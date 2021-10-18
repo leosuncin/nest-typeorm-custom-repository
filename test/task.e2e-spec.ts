@@ -14,7 +14,7 @@ import { TaskService } from '../src/task/task.service';
 
 const taskBuilder = build<Pick<Task, 'title' | 'done'>>('Task', {
   fields: {
-    title: fake(f => f.lorem.words(5)),
+    title: fake((f) => f.lorem.words(5)),
     done: bool(),
   },
 });
@@ -79,7 +79,7 @@ describe('TaskController (e2e)', () => {
       request
         .get('/task')
         .expect(HttpStatus.OK)
-        .then(resp => resp.body),
+        .then((resp) => resp.body),
     ).resolves.toMatchSchema(tasksSchema));
 
   it('list all done tasks', async () => {
@@ -100,40 +100,40 @@ describe('TaskController (e2e)', () => {
     expect(tasks.reduce((prev, curr) => prev || curr.done, false)).toBeFalsy();
   });
 
-  it.each(taskIds)('get task with id of %d', id =>
+  it.each(taskIds)('get task with id of %d', (id) =>
     expect(
       request
         .get(`/task/${id}`)
         .expect(HttpStatus.OK)
-        .then(resp => resp.body),
+        .then((resp) => resp.body),
     ).resolves.toMatchSchema(taskSchema),
   );
 
   it.each(Array.from({ length: 3 }, () => taskBuilder()))(
     'create a new task with %p',
-    newTask =>
+    (newTask) =>
       expect(
         request
           .post('/task')
           .send(newTask)
           .expect(HttpStatus.CREATED)
-          .then(resp => resp.body),
+          .then((resp) => resp.body),
       ).resolves.toMatchSchema(taskSchema),
   );
 
-  it.each(taskIds)('update task with id of %d', async id =>
+  it.each(taskIds)('update task with id of %d', async (id) =>
     expect(
       request
         .put(`/task/${id}`)
         .send(taskBuilder())
         .expect(HttpStatus.OK)
-        .then(resp => resp.body),
+        .then((resp) => resp.body),
     ).resolves.toMatchSchema(taskSchema),
   );
 
   it('mark as done a task', async () => {
     const task = await taskService.create(
-      taskBuilder({ map: t => ({ ...t, done: false }) }),
+      taskBuilder({ map: (t) => ({ ...t, done: false }) }),
     );
 
     const { body } = await request
@@ -146,7 +146,7 @@ describe('TaskController (e2e)', () => {
 
   it('mark as pending a task', async () => {
     const task = await taskService.create(
-      taskBuilder({ map: t => ({ ...t, done: true }) }),
+      taskBuilder({ map: (t) => ({ ...t, done: true }) }),
     );
 
     const { body } = await request

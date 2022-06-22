@@ -1,4 +1,5 @@
-import { bool, build, fake } from '@jackfranklin/test-data-bot';
+import { faker } from '@faker-js/faker';
+import { bool, build, perBuild } from '@jackfranklin/test-data-bot';
 import {
   HttpStatus,
   INestApplication,
@@ -14,7 +15,7 @@ import { TaskService } from '../src/task/task.service';
 
 const taskBuilder = build<Pick<Task, 'title' | 'done'>>('Task', {
   fields: {
-    title: fake((f) => f.lorem.words(5)),
+    title: perBuild(() => faker.lorem.words(5)),
     done: bool(),
   },
 });

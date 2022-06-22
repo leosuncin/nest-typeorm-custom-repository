@@ -1,10 +1,5 @@
-import {
-  bool,
-  build,
-  fake,
-  perBuild,
-  sequence,
-} from '@jackfranklin/test-data-bot';
+import { faker } from '@faker-js/faker';
+import { bool, build, perBuild, sequence } from '@jackfranklin/test-data-bot';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { TaskController } from './task.controller';
@@ -15,7 +10,7 @@ import { TaskService } from './task.service';
 const taskBuilder = build<Task>({
   fields: {
     id: sequence(),
-    title: fake((f) => f.lorem.words(5)),
+    title: perBuild(() => faker.lorem.words(5)),
     done: bool(),
     createdAt: perBuild(() => new Date()),
     updatedAt: perBuild(() => new Date()),

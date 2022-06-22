@@ -1,7 +1,4 @@
 {
-  // Use IntelliSense para saber los atributos posibles.
-  // Mantenga el puntero para ver las descripciones de los existentes atributos
-  // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
@@ -25,7 +22,6 @@
       ],
       "args": ["${workspaceFolder}/src/main.ts"],
       "sourceMaps": true,
-      "disableOptimisticBPs": true,
       "console": "internalConsole"
     },
     {
@@ -35,8 +31,7 @@
       "envFile": "${workspaceFolder}/.env",
       "runtimeArgs": ["-r", "tsconfig-paths/register"],
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": ["--runInBand"],
-      "disableOptimisticBPs": true
+      "args": ["--runInBand"]
     },
     {
       "name": "Launch current test",
@@ -45,8 +40,7 @@
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
       "args": ["${relativeFile}"],
       "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
-      "disableOptimisticBPs": true
+      "internalConsoleOptions": "openOnSessionStart"
     }
   ]
 }

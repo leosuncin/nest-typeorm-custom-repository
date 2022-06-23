@@ -1,10 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { bool, build, perBuild } from '@jackfranklin/test-data-bot';
-import {
-  HttpStatus,
-  INestApplication,
-  NotFoundException,
-} from '@nestjs/common';
+import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { matchers } from 'jest-json-schema';
 import * as supertest from 'supertest';
@@ -59,7 +55,7 @@ describe('TaskController (e2e)', () => {
   let taskService: TaskService;
   const taskIds = [1, 2, 3];
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
@@ -73,95 +69,103 @@ describe('TaskController (e2e)', () => {
     request = supertest(app.getHttpServer());
   });
 
-  afterEach(async () => await app.close());
+  afterAll(async () => {
+    await app.close();
+  });
 
-  it('list all the tasks', () =>
-    expect(
-      request
-        .get('/task')
-        .expect(HttpStatus.OK)
-        .then((resp) => resp.body),
-    ).resolves.toMatchSchema(tasksSchema));
+  it('list all the tasks', async () => {
+    await request
+      .get('/task')
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toMatchSchema(tasksSchema);
+      });
+  });
 
   it('list all done tasks', async () => {
-    const { body: tasks } = await request
+    await request
       .get('/task/done')
-      .expect(HttpStatus.OK);
-
-    expect(Array.isArray(tasks)).toBe(true);
-    expect(tasks.reduce((prev, curr) => prev && curr.done, true)).toBeTruthy();
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toMatchSchema(tasksSchema);
+        expect(body.every((task) => task.done)).toBe(true);
+      });
   });
 
   it('list all pending tasks', async () => {
-    const { body: tasks } = await request
+    await request
       .get('/task/pending')
-      .expect(HttpStatus.OK);
-
-    expect(Array.isArray(tasks)).toBe(true);
-    expect(tasks.reduce((prev, curr) => prev || curr.done, false)).toBeFalsy();
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toMatchSchema(tasksSchema);
+        expect(body.every((task) => !task.done)).toBe(true);
+      });
   });
 
-  it.each(taskIds)('get task with id of %d', (id) =>
-    expect(
-      request
-        .get(`/task/${id}`)
-        .expect(HttpStatus.OK)
-        .then((resp) => resp.body),
-    ).resolves.toMatchSchema(taskSchema),
-  );
+  it.each(taskIds)('get task with id of %d', async (id) => {
+    await request
+      .get(`/task/${id}`)
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toMatchSchema(taskSchema);
+      });
+  });
 
   it.each(Array.from({ length: 3 }, () => taskBuilder()))(
     'create a new task with %p',
-    (newTask) =>
-      expect(
-        request
-          .post('/task')
-          .send(newTask)
-          .expect(HttpStatus.CREATED)
-          .then((resp) => resp.body),
-      ).resolves.toMatchSchema(taskSchema),
+    async (newTask) => {
+      await request
+        .post('/task')
+        .send(newTask)
+        .expect(HttpStatus.CREATED)
+        .expect(({ body }) => {
+          expect(body).toMatchSchema(taskSchema);
+        });
+    },
   );
 
-  it.each(taskIds)('update task with id of %d', async (id) =>
-    expect(
-      request
-        .put(`/task/${id}`)
-        .send(taskBuilder())
-        .expect(HttpStatus.OK)
-        .then((resp) => resp.body),
-    ).resolves.toMatchSchema(taskSchema),
-  );
+  it.each(taskIds)('update task with id of %d', async (id) => {
+    await request
+      .put(`/task/${id}`)
+      .send(taskBuilder())
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toMatchSchema(taskSchema);
+      });
+  });
 
   it('mark as done a task', async () => {
     const task = await taskService.create(
-      taskBuilder({ map: (t) => ({ ...t, done: false }) }),
+      taskBuilder({ overrides: { done: false } }),
     );
 
-    const { body } = await request
+    await request
       .patch(`/task/${task.id}/done`)
-      .expect(HttpStatus.OK);
-
-    expect(body).toMatchSchema(taskSchema);
-    expect(body.done).toBe(true);
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toMatchSchema(taskSchema);
+        expect(body.done).toBe(true);
+      });
   });
 
   it('mark as pending a task', async () => {
     const task = await taskService.create(
-      taskBuilder({ map: (t) => ({ ...t, done: true }) }),
+      taskBuilder({ overrides: { done: true } }),
     );
 
-    const { body } = await request
+    await request
       .patch(`/task/${task.id}/pending`)
-      .expect(HttpStatus.OK);
-
-    expect(body).toMatchSchema(taskSchema);
-    expect(body.done).toBe(false);
+      .expect(HttpStatus.OK)
+      .expect(({ body }) => {
+        expect(body).toMatchSchema(taskSchema);
+        expect(body.done).toBe(false);
+      });
   });
 
   it('remove a task', async () => {
     const task = await taskService.create(taskBuilder());
 
     await request.delete(`/task/${task.id}`).expect(HttpStatus.NO_CONTENT);
-    await expect(taskService.get(task.id)).rejects.toThrow(NotFoundException);
+    await request.get(`/task/${task.id}`).expect(HttpStatus.NOT_FOUND);
   });
 });

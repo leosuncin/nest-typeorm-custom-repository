@@ -1,73 +1,92 @@
+# 🗄️ Nest.js + TypeORM with a Custom Repository
+
+[![MegaLinter](https://github.com/leosuncin/nest-typeorm-custom-repository/workflows/MegaLinter/badge.svg?branch=master)](https://github.com/leosuncin/nest-typeorm-custom-repository/actions/workflows/mega-linter.yml)
+[![Tests](https://github.com/leosuncin/nest-typeorm-custom-repository/workflows/Tests/badge.svg?branch=master)](https://github.com/leosuncin/nest-typeorm-custom-repository/actions/workflows/tests.yml)
+![Prettier](https://img.shields.io/badge/Code%20style-prettier-informational?logo=prettier&logoColor=white)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![HitCount](https://hits.dwyl.com/leosuncin/nest-typeorm-custom-repository.svg)](https://hits.dwyl.com/leosuncin/nest-typeorm-custom-repository)
+
+> An example of how to use a custom repository of TypeORM within Nest.js
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Features
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- [TypeORM](https://typeorm.io/) with custom repository
+- Unit tests and E2E tests
+- Check code quality with [MegaLinter](https://megalinter.github.io/latest/)
+- Run tests with [github actions](.github/workflows/tests.yml)
 
-## Description
+## Run Locally
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+Clone the project
 
 ```bash
-npm install
+  git clone https://github.com/leosuncin/nest-typeorm-custom-repository.git
 ```
 
-## Running the app
+Go to the project directory
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+  cd nest-typeorm-custom-repository
 ```
 
-## Test
+Install dependencies
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+  yarn install
 ```
 
-## Support
+Start the server
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+  yarn start:dev
+```
 
-## Stay in touch
+## Running Tests
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+To run unit tests, run the following command:
+
+```bash
+  pnpm test
+```
+
+To run e2e tests (the MySQL instance must be available), run the following command:
+
+```bash
+  pnpm test:e2e
+```
+
+## Tech Stack
+
+**Server:** Typescript, SQLite, Nest.js, TypeORM
+
+**Test:** Jest, SuperTest
+
+## Author
+
+👤 **Jaime Leonardo Suncin Cruz**
+
+- Twitter: [@jl_suncin](https://twitter.com/jl_suncin)
+- Github: [@leosuncin](https://github.com/leosuncin)
+- LinkedIn: [@jaimesuncin](https://linkedin.com/in/jaimesuncin)<!-- markdown-link-check-disable-line -->
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## Related
+
+Here are some more example projects with Nest.js
+
+[![Authentication example](https://github-readme-stats.vercel.app/api/pin/?username=leosuncin&repo=nest-auth-example)](https://github.com/leosuncin/nest-auth-example)
+
+[![API example](https://github-readme-stats.vercel.app/api/pin/?username=leosuncin&repo=nest-api-example)](https://github.com/leosuncin/nest-api-example)
+
+[![GraphQL example](https://github-readme-stats.vercel.app/api/pin/?username=leosuncin&repo=nest-graphql-example)](https://github.com/leosuncin/nest-graphql-example)
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Release under the terms of [MIT](./LICENSE)

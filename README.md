@@ -7,7 +7,7 @@
 [![HitCount](https://hits.dwyl.com/leosuncin/nest-typeorm-custom-repository.svg)](https://hits.dwyl.com/leosuncin/nest-typeorm-custom-repository)
 
 > An example of how to use a custom repository of TypeORM within Nest.js  
-> **🚨 NOTICE 🚨** this example works with TypeORM v0.2.x and @nestjs/typeorm <= v8.0.3
+> **🚨 NOTICE 🚨** this example now works with TypeORM v0.3.x for previous version check out [v1.0.0](https://github.com/leosuncin/nest-typeorm-custom-repository/tree/v1.0.0)
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>

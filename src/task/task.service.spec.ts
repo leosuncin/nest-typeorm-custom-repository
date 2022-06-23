@@ -1,10 +1,11 @@
 import { faker } from '@faker-js/faker';
 import { bool, build, perBuild, sequence } from '@jackfranklin/test-data-bot';
 import { Test, TestingModule } from '@nestjs/testing';
+import { getRepositoryToken } from '@nestjs/typeorm';
 
 import type { TaskCreate } from './dto/task-create.dto';
 import { Task } from './task.entity';
-import { TaskRepository } from './task.repository';
+import type { TaskRepository } from './task.repository';
 import { TaskService } from './task.service';
 
 const taskBuilder = build<Task>({
@@ -19,32 +20,34 @@ const taskBuilder = build<Task>({
     return Object.assign(new Task(), task);
   },
 });
-const MockRepository = jest.fn().mockImplementation(() => {
-  const tasks = Array.from({ length: 10 }, () => taskBuilder());
+const MockRepository: jest.Mock<TaskRepository> = jest
+  .fn()
+  .mockImplementation(() => {
+    const tasks = Array.from({ length: 10 }, () => taskBuilder());
 
-  return {
-    find: jest.fn().mockResolvedValue(tasks),
-    findDone: jest.fn().mockResolvedValue(tasks.filter((t) => t.done)),
-    findPending: jest.fn().mockResolvedValue(tasks.filter((t) => !t.done)),
-    findOne: jest
-      .fn()
-      .mockImplementation((id: number) =>
-        Promise.resolve(id < 1 ? null : taskBuilder({ overrides: { id } })),
-      ),
-    create: jest
-      .fn()
-      .mockImplementation(({ title }: TaskCreate) =>
-        taskBuilder({ overrides: { title, done: false } }),
-      ),
-    merge: jest.fn(Object.assign),
-    save: jest
-      .fn()
-      .mockImplementation((dto) =>
-        Promise.resolve(taskBuilder({ overrides: dto })),
-      ),
-    delete: jest.fn().mockResolvedValue({ raw: [], affected: 1 }),
-  };
-});
+    return {
+      find: jest.fn().mockResolvedValue(tasks),
+      findDone: jest.fn().mockResolvedValue(tasks.filter((t) => t.done)),
+      findPending: jest.fn().mockResolvedValue(tasks.filter((t) => !t.done)),
+      findOneBy: jest
+        .fn()
+        .mockImplementation(({ id }: { id: number }) =>
+          Promise.resolve(id < 1 ? null : taskBuilder({ overrides: { id } })),
+        ),
+      create: jest
+        .fn()
+        .mockImplementation(({ title }: TaskCreate) =>
+          taskBuilder({ overrides: { title, done: false } }),
+        ),
+      merge: jest.fn(Object.assign),
+      save: jest
+        .fn()
+        .mockImplementation((dto) =>
+          Promise.resolve(taskBuilder({ overrides: dto })),
+        ),
+      delete: jest.fn().mockResolvedValue({ raw: [], affected: 1 }),
+    };
+  });
 
 describe('TaskService', () => {
   let service: TaskService;
@@ -53,7 +56,7 @@ describe('TaskService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         {
-          provide: TaskRepository,
+          provide: getRepositoryToken(Task),
           useClass: MockRepository,
         },
         TaskService,

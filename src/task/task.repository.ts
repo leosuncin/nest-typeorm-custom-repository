@@ -1,14 +1,23 @@
-import { EntityRepository, Repository } from 'typeorm';
+import type { Repository } from 'typeorm';
 
-import { Task } from './task.entity';
+import type { Task } from './task.entity';
 
-@EntityRepository(Task)
-export class TaskRepository extends Repository<Task> {
-  findDone() {
-    return this.find({ done: true });
-  }
+export interface TaskRepository extends Repository<Task> {
+  this: Repository<Task>;
 
-  findPending() {
-    return this.find({ done: false });
-  }
+  findDone(): Promise<Task[]>;
+
+  findPending(): Promise<Task[]>;
 }
+
+export const customTaskRepositoryMethods: Pick<
+  TaskRepository,
+  'findDone' | 'findPending'
+> = {
+  findDone(this: Repository<Task>) {
+    return this.findBy({ done: true });
+  },
+  findPending(this: Repository<Task>) {
+    return this.findBy({ done: false });
+  },
+};

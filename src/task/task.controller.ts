@@ -1,7 +1,6 @@
 import {
   Controller,
   Get,
-  Query,
   Param,
   ParseIntPipe,
   Post,
@@ -20,7 +19,7 @@ export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
   @Get()
-  find(@Query() where?) {
+  find() {
     return this.taskService.findAll();
   }
 

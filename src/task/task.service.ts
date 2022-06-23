@@ -37,13 +37,9 @@ export class TaskService {
   }
 
   async update(id: number, updates: TaskUpdate) {
-    const task = await this.taskRepository.findOne(id);
+    const task = await this.get(id);
 
-    if (!task) {
-      throw new NotFoundException(`There isn't any task with id: ${id}`);
-    }
-
-    Object.assign(task, updates);
+    this.taskRepository.merge(task, updates);
 
     return this.taskRepository.save(task);
   }

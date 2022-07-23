@@ -17,7 +17,7 @@
 
 - [TypeORM](https://typeorm.io/) with custom repository
 - Unit tests and E2E tests
-- Check code quality with [MegaLinter](https://megalinter.github.io/latest/)
+- Check code quality with [MegaLinter](https://oxsecurity.github.io/megalinter/latest/)
 - Run tests with [github actions](.github/workflows/tests.yml)
 
 ## Run Locally

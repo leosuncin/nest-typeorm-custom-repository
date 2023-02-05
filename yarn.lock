@@ -724,16 +724,16 @@
     tslib "2.5.0"
 
 "@nestjs/core@^9.0.5":
-  version "9.2.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-9.2.1.tgz#598e51a421a0aaafc568c1a02499f7c1f9491caf"
-  integrity sha512-a9GkXuu8uXgNgCVW+17iI8kLCltO+HwHpU2IhR+32JKnN2WEQ1YEWU4t3GJ2MNq44YkjIw9zrKvFkjJBlYrNbQ==
+  version "9.3.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-9.3.2.tgz#53c6caed4597e057a4313379c3e2f4f63846ab4c"
+  integrity sha512-79h4RvGAGFIIZJWIXqZ8xvhK/kIY6Fay7a1P0W4v7AUZsMIuNksct0uMzHaBqMT0lo+Ei+gU8PaWvzZt5lZvJw==
   dependencies:
     "@nuxtjs/opencollective" "0.3.2"
     fast-safe-stringify "2.1.1"
     iterare "1.2.1"
     object-hash "3.0.0"
     path-to-regexp "3.2.0"
-    tslib "2.4.1"
+    tslib "2.5.0"
     uuid "9.0.0"
 
 "@nestjs/platform-express@^9.0.5":

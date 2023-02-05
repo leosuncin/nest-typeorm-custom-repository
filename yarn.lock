@@ -759,11 +759,11 @@
     pluralize "8.0.0"
 
 "@nestjs/testing@^9.0.5":
-  version "9.2.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-9.2.1.tgz#2a3f64214d58ec4ab878862395407947671e4ece"
-  integrity sha512-lemXZdRSuqoZ87l0orCrS/c7gqwxeduIFOd21g9g2RUeQ4qlWPegbQDKASzbfC28klPyrgJLW4MNq7uv2JwV8w==
+  version "9.3.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-9.3.2.tgz#8d0fe3d7645a2bb56b32b57adc9db9e557445b8c"
+  integrity sha512-A1DleYwUpA/MX4XLTOJYEkhEjdI0HyujTmOUoPzSplAPWXbR48DTtY3Pu3A/qM7A8JwPzfB37glFUAJvFFOYpg==
   dependencies:
-    tslib "2.4.1"
+    tslib "2.5.0"
 
 "@nestjs/typeorm@^9.0.0":
   version "9.0.1"

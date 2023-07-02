@@ -2285,15 +2285,7 @@ end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
-enhanced-resolve@^5.0.0, enhanced-resolve@^5.7.0:
-  version "5.14.0"
-  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.14.0.tgz#0b6c676c8a3266c99fa281e4433a706f5c0c61c4"
-  integrity sha512-+DCows0XNwLDcUhbFJPdlQEVnT2zXlCv7hPxemTz86/O+B/hCQ+mb7ydkPKiflpVraqLPCAfu7lDy+hBXueojw==
-  dependencies:
-    graceful-fs "^4.2.4"
-    tapable "^2.2.0"
-
-enhanced-resolve@^5.15.0:
+enhanced-resolve@^5.0.0, enhanced-resolve@^5.15.0, enhanced-resolve@^5.7.0:
   version "5.15.0"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.15.0.tgz#1af946c7d93603eb88e9896cee4904dc012e9c35"
   integrity sha512-LXYT42KJ7lpIKECr2mAXIaMldcNCh/7E0KBKOu4KSfkHmP+mZmSs+8V5gBAqisWBy0OO4W5Oyys0GO1Y8KtdKg==
@@ -5217,9 +5209,9 @@ ts-jest@^28.0.5:
     yargs-parser "^21.0.1"
 
 ts-loader@^9.3.1:
-  version "9.4.3"
-  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-9.4.3.tgz#55cfa7c28dd82a2de968ae45c3adb75fb888b27e"
-  integrity sha512-n3hBnm6ozJYzwiwt5YRiJZkzktftRpMiBApHaJPoWLA+qetQBAXkHqCLM6nwSdRDimqVtA5ocIkcTRLMTt7yzA==
+  version "9.4.4"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-9.4.4.tgz#6ceaf4d58dcc6979f84125335904920884b7cee4"
+  integrity sha512-MLukxDHBl8OJ5Dk3y69IsKVFRA/6MwzEqBgh+OXMPB/OD01KQuWPFd1WAQP8a5PeSCAxfnkhiuWqfmFJzJQt9w==
   dependencies:
     chalk "^4.1.0"
     enhanced-resolve "^5.0.0"

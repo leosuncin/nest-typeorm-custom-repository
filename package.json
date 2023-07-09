@@ -50,7 +50,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^28.1.1",
     "jest-json-schema": "^6.1.0",
-    "prettier": "^2.7.1",
+    "prettier": "^3.0.0",
     "supertest": "^6.2.3",
     "ts-jest": "^28.0.5",
     "ts-loader": "^9.3.1",

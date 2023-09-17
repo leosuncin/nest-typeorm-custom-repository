@@ -1040,9 +1040,9 @@
     "@types/istanbul-lib-report" "*"
 
 "@types/jest-json-schema@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@types/jest-json-schema/-/jest-json-schema-6.1.1.tgz#1471204581549da636d2bc956c1d352ae17ecb2c"
-  integrity sha512-tb+4AHBx+EwV3xSlZHMLE10MvitNGFpnQIZSTzZOPg15rXBdqig63BBE+pNAIN1226lP2L7zaVUcbvAsqMFluA==
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@types/jest-json-schema/-/jest-json-schema-6.1.2.tgz#63089b604ddcd631b759586eeaddf53230f97d99"
+  integrity sha512-q1vJINADTt4x4JguhM7qoB3D5INl++NDbIBN4zgs7RBj3EgORqohAsTTr2vzjKEQU2svpnvsNyxWSPnutz14og==
   dependencies:
     "@types/jest" "*"
     ajv "^6.10.2"

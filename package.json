@@ -51,7 +51,7 @@
     "jest": "^28.1.1",
     "jest-json-schema": "^6.1.0",
     "prettier": "^3.0.0",
-    "supertest": "^6.2.3",
+    "supertest": "^7.0.0",
     "ts-jest": "^28.0.5",
     "ts-loader": "^9.3.1",
     "ts-node": "^10.8.1",

@@ -28,6 +28,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Yarn Lockfile Changes
-        uses: Simek/yarn-lock-changes@v0.12.0
+        uses: Simek/yarn-lock-changes@v0.12.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

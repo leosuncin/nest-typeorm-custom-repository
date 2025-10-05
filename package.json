@@ -36,7 +36,7 @@
     "@faker-js/faker": "^8.0.0",
     "@jackfranklin/test-data-bot": "^2.0.0",
     "@nestjs/cli": "^10.0.2",
-    "@nestjs/schematics": "^10.0.1",
+    "@nestjs/schematics": "^11.0.8",
     "@nestjs/testing": "^9.0.5",
     "@types/express": "5.0.3",
     "@types/jest": "^28.1.3",

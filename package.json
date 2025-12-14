@@ -38,7 +38,7 @@
     "@nestjs/cli": "^10.0.2",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^9.0.5",
-    "@types/express": "5.0.5",
+    "@types/express": "5.0.6",
     "@types/jest": "^28.1.3",
     "@types/jest-json-schema": "^6.1.1",
     "@types/node": "^25.0.2",

@@ -15,18 +15,6 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@angular-devkit/core@19.2.22":
-  version "19.2.22"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-19.2.22.tgz#be4165a0fc182dc16d1456474acbe58bd1d8c714"
-  integrity sha512-OqN/Ded+ZKypPZN5+qUFwtnKGl7FKpxJXYO2Vts5vLBojY5goCZd9SGW1CyXeuPnisRUW+vjqBQbWYuEUh36Tw==
-  dependencies:
-    ajv "8.18.0"
-    ajv-formats "3.0.1"
-    jsonc-parser "3.3.1"
-    picomatch "4.0.2"
-    rxjs "7.8.1"
-    source-map "0.7.4"
-
 "@angular-devkit/core@19.2.23":
   version "19.2.23"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-19.2.23.tgz#6de99d6c6b568544f7f1ac98550e73f315654ea9"
@@ -39,28 +27,29 @@
     rxjs "7.8.1"
     source-map "0.7.4"
 
-"@angular-devkit/schematics-cli@19.2.22":
-  version "19.2.22"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics-cli/-/schematics-cli-19.2.22.tgz#b74337fff52cdc508dc8856ee51ee43617e261e8"
-  integrity sha512-6BvkxDz4nV8B6Ha4n/pYZ503vXgLxMaEpcKsFDao1sl0iSwrIOphlIS1yWprlGdCThIM3aJref1JU13ZvEcBCA==
+"@angular-devkit/core@19.2.24":
+  version "19.2.24"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-19.2.24.tgz#1d0448679c0292d46310b260f26e5eff7344eca1"
+  integrity sha512-Kd49warf6U/EyWe5BszF/eebN3zQ3bk7tgfEljAw8q/rX95UUtriJubWvp6pgzHfzBA4jwq8f+QiNZB8eBEXPA==
   dependencies:
-    "@angular-devkit/core" "19.2.22"
-    "@angular-devkit/schematics" "19.2.22"
+    ajv "8.18.0"
+    ajv-formats "3.0.1"
+    jsonc-parser "3.3.1"
+    picomatch "4.0.4"
+    rxjs "7.8.1"
+    source-map "0.7.4"
+
+"@angular-devkit/schematics-cli@19.2.24":
+  version "19.2.24"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics-cli/-/schematics-cli-19.2.24.tgz#b624b3179d66d1c49f89bd9646a25f05e996109c"
+  integrity sha512-bsStZQG67J1HBqTmWxtIcobvgrn32L4UOdL7hGyOru5VxDWPNA8pRnDYavT3hnJeBkJYPoQIw8u7Dm0ecoQprw==
+  dependencies:
+    "@angular-devkit/core" "19.2.24"
+    "@angular-devkit/schematics" "19.2.24"
     "@inquirer/prompts" "7.3.2"
     ansi-colors "4.1.3"
     symbol-observable "4.0.0"
     yargs-parser "21.1.1"
-
-"@angular-devkit/schematics@19.2.22":
-  version "19.2.22"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-19.2.22.tgz#184fbf6dc630dc0af5a49f1eae5aaa99f821221b"
-  integrity sha512-tvfu5jhem1o8qidVxvXe5KfCij65ioMLCOFA947DD+zb3yTl5pJyDm2dqzbOehuQw0fmH4XPQukRJsCUy+UwaA==
-  dependencies:
-    "@angular-devkit/core" "19.2.22"
-    jsonc-parser "3.3.1"
-    magic-string "0.30.17"
-    ora "5.4.1"
-    rxjs "7.8.1"
 
 "@angular-devkit/schematics@19.2.23":
   version "19.2.23"
@@ -68,6 +57,17 @@
   integrity sha512-Jzs7YM4X6azmHU7Mw5tQSPMuvaqYS8SLnZOJbtiXCy1JyuW9bm/WBBecNHMiuZ8LHXKhvQ6AVX1tKrzF6uiDmw==
   dependencies:
     "@angular-devkit/core" "19.2.23"
+    jsonc-parser "3.3.1"
+    magic-string "0.30.17"
+    ora "5.4.1"
+    rxjs "7.8.1"
+
+"@angular-devkit/schematics@19.2.24":
+  version "19.2.24"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-19.2.24.tgz#71d461410d7bebe03f30edc2c50f6ac7b115b281"
+  integrity sha512-lnw+ZM1Io+cJAkReC0NPDjqObL8NtKzKIkdgEEKC8CUmkhurYhedbicN8Y8NYHgG1uLd2GozW3+/QqPRZaN+Lw==
+  dependencies:
+    "@angular-devkit/core" "19.2.24"
     jsonc-parser "3.3.1"
     magic-string "0.30.17"
     ora "5.4.1"
@@ -987,13 +987,13 @@
   integrity sha512-uSvJdwQU5nK+Vdf6zxcWAY2A8r7uqe+gePwLWzJ+fsQehq18pc0I2hJKwypZ2aLM90+Er9u1xn4iLJPZ+xlL4g==
 
 "@nestjs/cli@^11.0.17":
-  version "11.0.17"
-  resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-11.0.17.tgz#ffc570cab982094ebbf18b606efd610eb170bb73"
-  integrity sha512-tOMgoB9k+Zb2WdKYPhbhceROLcDR1BFQZWfkBOGMRgBTo8rnC125E65UvThEA77vp4w+zKjqiSIv0leT+wdpHg==
+  version "11.0.19"
+  resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-11.0.19.tgz#e67361b51275ff079348a7d70adf43283d7d1eaa"
+  integrity sha512-9htODqTVVNH4lJqyeIotsAgfeaYngDi020cVCd6JhJRKuOT83c/t4JDSky6+xr0lhHyNTNMgZmulxqcMNZFfrw==
   dependencies:
-    "@angular-devkit/core" "19.2.22"
-    "@angular-devkit/schematics" "19.2.22"
-    "@angular-devkit/schematics-cli" "19.2.22"
+    "@angular-devkit/core" "19.2.24"
+    "@angular-devkit/schematics" "19.2.24"
+    "@angular-devkit/schematics-cli" "19.2.24"
     "@inquirer/prompts" "7.10.1"
     "@nestjs/schematics" "^11.0.1"
     ansis "4.2.0"
@@ -1007,7 +1007,7 @@
     tsconfig-paths "4.2.0"
     tsconfig-paths-webpack-plugin "4.2.0"
     typescript "5.9.3"
-    webpack "5.105.4"
+    webpack "5.106.0"
     webpack-node-externals "3.0.0"
 
 "@nestjs/common@^11.0.16":
@@ -4736,11 +4736,6 @@ picocolors@^1.1.1:
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.1.1.tgz#3d321af3eab939b083c8f929a1d12cda81c26b6b"
   integrity sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==
 
-picomatch@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-4.0.2.tgz#77c742931e8f3b8820946c76cd0c1f13730d1dab"
-  integrity sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==
-
 picomatch@4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-4.0.4.tgz#fd6f5e00a143086e074dffe4c924b8fb293b0589"
@@ -5943,10 +5938,10 @@ webpack-sources@^3.3.4:
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.3.4.tgz#a338b95eb484ecc75fbb196cbe8a2890618b4891"
   integrity sha512-7tP1PdV4vF+lYPnkMR0jMY5/la2ub5Fc/8VQrrU+lXkiM6C4TjVfGw7iKfyhnTQOsD+6Q/iKw0eFciziRgD58Q==
 
-webpack@5.105.4:
-  version "5.105.4"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.105.4.tgz#1b77fcd55a985ac7ca9de80a746caffa38220169"
-  integrity sha512-jTywjboN9aHxFlToqb0K0Zs9SbBoW4zRUlGzI2tYNxVYcEi/IPpn+Xi4ye5jTLvX2YeLuic/IvxNot+Q1jMoOw==
+webpack@5.106.0:
+  version "5.106.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.106.0.tgz#ee374da5573eef1e47b2650d6be8e40fb928d697"
+  integrity sha512-Pkx5joZ9RrdgO5LBkyX1L2ZAJeK/Taz3vqZ9CbcP0wS5LEMx5QkKsEwLl29QJfihZ+DKRBFldzy1O30pJ1MDpA==
   dependencies:
     "@types/eslint-scope" "^3.7.7"
     "@types/estree" "^1.0.8"

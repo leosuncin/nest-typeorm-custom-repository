@@ -1033,9 +1033,9 @@
     pluralize "8.0.0"
 
 "@nestjs/testing@^11.1.18":
-  version "11.1.18"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-11.1.18.tgz#9130fed7ce92b913c5d1389a27e0c98f7695bff3"
-  integrity sha512-frzwNlpBgtAzI3hp/qo57DZoRO4RMTH1wST3QUYEhRTHyfPkLpzkWz3jV/mhApXjD0yT56Ptlzn6zuYPLh87Lw==
+  version "11.1.19"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-11.1.19.tgz#1bb72dbeb4de6fee23d3f1efe310970e5c9b0cb7"
+  integrity sha512-/UFNWXvPEdu4v4DlC5oWLbGKmD27LehLK06b8oLzs6D6lf4vAQTdST8LRAXBadyMUQnVEQWMuBo3CtAVtlfXtQ==
   dependencies:
     tslib "2.8.1"
 

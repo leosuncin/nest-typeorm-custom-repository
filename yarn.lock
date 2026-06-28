@@ -1103,9 +1103,9 @@
     tslib "2.8.1"
 
 "@nestjs/typeorm@^11.0.1":
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-11.0.2.tgz#b43705d39f32a6d83c89c19aa14f9a44e37b454e"
-  integrity sha512-KQsmOKqIbfq+I1fe88rDq8QNfTU3C4b8MA2qOImhvIbIDOStcC+m+z2itf7vnWGQK0LZBFjWlYdRBID12qgZeg==
+  version "11.0.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-11.0.3.tgz#7b1da806fa23c5e2f222d25088334e2bf3d0aad5"
+  integrity sha512-zJ+E5l7auVVA7c0PsvcMdyvRPKTUqU5s2ToYmOA2QEsXQ42qbUGtK4+1HlRfpHqBkCSXP+phiH4luvf9DyJNog==
 
 "@noble/hashes@^1.1.5":
   version "1.8.0"

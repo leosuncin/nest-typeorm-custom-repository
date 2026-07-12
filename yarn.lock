@@ -1028,9 +1028,9 @@
   integrity sha512-uSvJdwQU5nK+Vdf6zxcWAY2A8r7uqe+gePwLWzJ+fsQehq18pc0I2hJKwypZ2aLM90+Er9u1xn4iLJPZ+xlL4g==
 
 "@nestjs/cli@^11.0.17":
-  version "11.0.23"
-  resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-11.0.23.tgz#ace0634d80ebbdbadd21c2cddffa450c62e41ea0"
-  integrity sha512-2V0Bf5jz0KXhUZk3eJi9GljIyqH04otwsE/mYLbqJR+X0iiYx+6bkNJ2Qz28uHNFj1cpHgimf9xDzHkqarie0g==
+  version "11.0.24"
+  resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-11.0.24.tgz#afcff6ecab265e31abf539126ff2a6e9414f030d"
+  integrity sha512-aIHxQLSYtXShifA3zwWIeznEsZnNa3Iz2QRykFj+sl9IcbERBHr5nH87FRgywM+He3NxoF5WazHfR8FsmVeWxw==
   dependencies:
     "@angular-devkit/core" "19.2.27"
     "@angular-devkit/schematics" "19.2.27"

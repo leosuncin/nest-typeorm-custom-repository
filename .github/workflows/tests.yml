@@ -16,7 +16,7 @@ jobs:
         node-version: [22.x, 24.x]
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
       - uses: bahmutov/npm-install@v1
@@ -36,7 +36,7 @@ jobs:
         node-version: [22.x, 24.x]
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
       - uses: bahmutov/npm-install@v1
